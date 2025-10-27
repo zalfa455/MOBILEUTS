@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/app_heart_pink_light"
+    android:background="@color/app_cheese_yellow"
     tools:context=".AlamatActivity">
 
     <TextView
@@ -21,56 +21,77 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/et_full_name_alamat"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_alamat_form"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/edittext_background"
-        android:hint="Nama Lengkap"
-        android:inputType="textPersonName"
-        android:padding="16dp"
-        android:textColor="@color/app_text_primary"
-        android:textColorHint="@color/app_text_secondary"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_alamat_title" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_alamat_title">
 
-    <EditText
-        android:id="@+id/et_alamat"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/edittext_background"
-        android:hint="Alamat"
-        android:inputType="text"
-        android:padding="16dp"
-        android:textColor="@color/app_text_primary"
-        android:textColorHint="@color/app_text_secondary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_full_name_alamat" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
 
-    <EditText
-        android:id="@+id/et_patokan_alamat"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/edittext_background"
-        android:hint="Patokan alamat lengkap"
-        android:inputType="text"
-        android:padding="16dp"
-        android:textColor="@color/app_text_primary"
-        android:textColorHint="@color/app_text_secondary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_alamat" />
+            <EditText
+                android:id="@+id/et_full_name_alamat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_background"
+                android:drawableStart="@drawable/ic_profile"
+                android:drawablePadding="12dp"
+                android:hint="Nama Lengkap"
+                android:inputType="textPersonName"
+                android:padding="16dp"
+                android:textColor="@color/app_text_primary"
+                android:textColorHint="@color/app_text_secondary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/et_alamat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edittext_background"
+                android:drawableStart="@drawable/ic_location"
+                android:drawablePadding="12dp"
+                android:hint="Alamat"
+                android:inputType="text"
+                android:padding="16dp"
+                android:textColor="@color/app_text_primary"
+                android:textColorHint="@color/app_text_secondary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_full_name_alamat" />
+
+            <EditText
+                android:id="@+id/et_patokan_alamat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edittext_background"
+                android:drawableStart="@drawable/ic_info"
+                android:drawablePadding="12dp"
+                android:hint="Patokan (cth: depan minimarket)"
+                android:inputType="text"
+                android:padding="16dp"
+                android:textColor="@color/app_text_primary"
+                android:textColorHint="@color/app_text_secondary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_alamat" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
 
     <Button
         android:id="@+id/btn_order_kirim_submit"
@@ -82,12 +103,10 @@
         android:background="@drawable/button_background_dark"
         android:paddingVertical="16dp"
         android:text="Order dan Kirim"
-        app:backgroundTint="@null"
         android:textAllCaps="false"
         android:textColor="@color/app_button_text"
         android:textSize="18sp"
+        app:backgroundTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_patokan_alamat" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintTop_toBottomOf="@+id/cv_alamat_form" /> </androidx.constraintlayout.widget.ConstraintLayout>

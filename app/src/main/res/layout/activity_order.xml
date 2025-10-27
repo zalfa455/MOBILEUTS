@@ -8,186 +8,151 @@
     android:background="@color/app_cheese_yellow"
     tools:context=".OrderActivity">
 
-    <!-- Header Nama -->
     <TextView
         android:id="@+id/tv_halo_name_order"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
-        android:text="Halo, Pizza Lover!"
-        android:textColor="@color/pizza_dark_text"
-        android:textSize="22sp"
+        android:text="Halo Nazwa,"
+        android:textColor="@color/app_text_primary"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Judul -->
-    <TextView
-        android:id="@+id/tv_pesanan_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:text="Ringkasan Pesanan"
-        android:textColor="@color/pizza_dark_text"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_halo_name_order" />
-
-    <!-- Kartu Pesanan -->
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_order_summary"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_order_summary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginTop="12dp"
-        app:cardCornerRadius="18dp"
-        app:cardElevation="6dp"
-        app:cardBackgroundColor="@color/pizza_card_bg"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_pesanan_title">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_halo_name_order">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <!-- Item 1 -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:paddingVertical="8dp">
-
-                <TextView
-                    android:id="@+id/tv_item_1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Pizza Margherita"
-                    android:textColor="@color/pizza_dark_text"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/tv_item_1_qty"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="12dp"
-                    android:text="x1"
-                    android:textColor="@color/pizza_secondary_text"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/tv_item_1_price"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Rp 85.000"
-                    android:textColor="@color/pizza_accent"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
-
-    <!-- Ringkasan Biaya -->
-    <LinearLayout
-        android:id="@+id/ll_cost_summary"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_order_summary">
-
-        <LinearLayout
-            android:layout_width="match_parent"
+            android:padding="16dp"> <TextView
+            android:id="@+id/tv_pesanan_title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:text="Ringkasan Pesanan:"
+            android:textColor="@color/app_text_primary"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" /> <TextView
+            android:id="@+id/tv_item_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="1x Pepperoni Pizza (Large)"
+            android:textColor="@color/app_text_secondary"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/tv_item_1_price"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_pesanan_title" />
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Subtotal"
-                android:textColor="@color/pizza_secondary_text"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/tv_subtotal"
+                android:id="@+id/tv_item_1_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rp 85.000"
-                android:textColor="@color/pizza_dark_text"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"
-            android:background="@color/pizza_divider" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                android:text="Rp 120.000"
+                android:textColor="@color/app_text_secondary"
+                android:textSize="16sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tv_item_1"
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
+                android:id="@+id/tv_item_2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="8dp"
+                android:text="2x Cheesy Garlic Bread"
+                android:textColor="@color/app_text_secondary"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/tv_item_2_price"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_item_1_price" />
+
+            <TextView
+                android:id="@+id/tv_item_2_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rp 70.000"
+                android:textColor="@color/app_text_secondary"
+                android:textSize="16sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tv_item_2"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <View
+                android:id="@+id/view_separator"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="24dp"
+                android:background="@color/app_text_secondary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_item_2" />
+
+            <TextView
+                android:id="@+id/tv_total_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:text="Total"
-                android:textColor="@color/pizza_dark_text"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textColor="@color/app_text_primary"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_separator" />
 
             <TextView
-                android:id="@+id/tv_total"
+                android:id="@+id/tv_total_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rp 85.000"
-                android:textColor="@color/pizza_accent"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-    </LinearLayout>
+                android:text="Rp 190.000"
+                android:textColor="@color/app_text_primary"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tv_total_label"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Tombol Kirim -->
-    <com.google.android.material.button.MaterialButton
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <Button
         android:id="@+id/btn_kirim"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
-        android:paddingVertical="14dp"
-        android:text="Kirim Pesanan"
-        android:backgroundTint="@drawable/bottom_nav_colors"
-        android:textColor="@android:color/white"
+        android:background="@drawable/button_background_dark"
+        android:paddingVertical="16dp"
+        app:backgroundTint="@null"
+        android:text="Pesan Sekarang"
         android:textAllCaps="false"
-        app:cornerRadius="14dp"
-        app:iconPadding="8dp"
+        android:textColor="@color/app_button_text"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_order"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <!-- Bottom Navigation -->
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation_order"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bottom_nav_colors"
+        android:background="@color/white"
         app:itemIconTint="@drawable/bottom_nav_colors"
         app:itemTextColor="@drawable/bottom_nav_colors"
         app:labelVisibilityMode="labeled"

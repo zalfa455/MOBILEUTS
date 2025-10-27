@@ -5,40 +5,85 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/app_heart_pink_light"
+    android:background="@color/app_cheese_yellow"
     tools:context=".SuccessActivity">
 
-    <!-- Teks "Halo Nazwa," -->
     <TextView
         android:id="@+id/tv_halo_name_success"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="64dp"
-        android:text="Halo,"
+        android:text="Halo Nazwa,"
         android:textColor="@color/app_text_primary"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Pesan Terima Kasih -->
-    <TextView
-        android:id="@+id/tv_thank_you_message"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_success_message"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:lineSpacingExtra="4dp"
-        android:text="Terima kasih sudah memesan dan mohon tunggu dilokasi sampai kurir mengirimkan pesanan anda"
-        android:textColor="@color/app_text_secondary"
-        android:textSize="16sp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="6dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_halo_name_success" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_halo_name_success">
 
-    <!-- Tombol Kirim (di paling bawah) -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="24dp"
+            android:paddingTop="24dp">
+
+            <ImageView
+                android:id="@+id/iv_success_icon"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/ic_check_circle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="Success Icon" />
+
+            <TextView
+                android:id="@+id/tv_success_title_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Pesanan Berhasil!"
+                android:textColor="@color/app_text_primary"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_success_icon" />
+
+            <TextView
+                android:id="@+id/tv_thank_you_message"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:lineSpacingExtra="4dp"
+                android:text="Terima kasih sudah memesan di Amora Slice! Mohon tunggu di lokasi, kurir kami sedang dalam perjalanan mengirimkan pizza hangat dan lezat untuk Anda."
+                android:textAlignment="center"
+                android:textColor="@color/app_text_secondary"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_success_title_main" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
     <Button
         android:id="@+id/btn_kirim_success"
         android:layout_width="0dp"
@@ -48,11 +93,11 @@
         android:layout_marginBottom="32dp"
         android:background="@drawable/button_background_dark"
         android:paddingVertical="16dp"
-        app:backgroundTint="@null"
-        android:text="Kirim"
+        android:text="Kembali ke Menu Utama"
         android:textAllCaps="false"
         android:textColor="@color/app_button_text"
         android:textSize="18sp"
+        app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

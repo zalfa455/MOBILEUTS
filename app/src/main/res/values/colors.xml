@@ -30,5 +30,6 @@
     <color name="pizza_accent">#E53935</color>
     <color name="pizza_divider">#1F000000</color>
     <color name="pizza_nav_bg">#FFE0B2</color>
+    <color name="app_green_success">#4CAF50</color>
 
 </resources>
