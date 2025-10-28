@@ -8,7 +8,6 @@
     android:background="@color/app_cheese_yellow"
     tools:context=".HomeActivity">
 
-    <!-- Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
@@ -20,10 +19,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
+        app:menu="@menu/bottom_nav_menu"
+        android:elevation="8dp"/>
 
-    <!-- Scrollable Content -->
     <ScrollView
+        android:id="@+id/main_scrollview"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
@@ -32,13 +32,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:scrollbars="none"
+        android:clipToPadding="false"
+        android:paddingBottom="72dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <!-- Halo, Nazwa -->
             <TextView
                 android:id="@+id/tv_halo_name"
                 android:layout_width="wrap_content"
@@ -56,23 +58,298 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Judul Menu Pizza -->
+            <TextView
+                android:id="@+id/tv_rekomendasi_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rekomendasi Spesial 🌟"
+                android:textColor="@color/app_text_primary"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginTop="32dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_halo_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_rekomendasi"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="6dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_rekomendasi_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="16dp"> <ImageView
+                    android:layout_width="150dp" android:layout_height="150dp" android:src="@drawable/cardmenu" android:scaleType="centerCrop" android:contentDescription="Signature Smoked Beef"
+                    android:layout_gravity="center_horizontal" android:layout_marginTop="16dp" /> <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Signature Smoked Beef"
+                    android:textColor="@color/app_text_primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_gravity="center_horizontal"/> <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="6dp"
+                    android:text="Pizza premium dengan saus truffle, smoked beef impor, jamur, dan keju parmesan."
+                    android:textColor="@color/app_text_secondary"
+                    android:textSize="14sp"
+                    android:lineSpacingExtra="6dp"
+                    android:textAlignment="center"/> <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rp 135.000"
+                        android:textColor="@color/app_text_primary"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentStart="true"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_pesan_rekomendasi"
+                        android:background="@drawable/button_background_dark"
+                        app:backgroundTint="@null"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pesan Sekarang"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        app:cornerRadius="8dp"/>
+                </RelativeLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
             <TextView
                 android:id="@+id/tv_card_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Menu Pizza Favorit"
+                android:text="Menu Pizza Favorit 🔥"
                 android:textColor="@color/app_text_primary"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 android:layout_marginTop="32dp"
                 android:layout_marginBottom="16dp"
-                app:layout_constraintTop_toBottomOf="@+id/tv_halo_name"
+                app:layout_constraintTop_toBottomOf="@+id/card_rekomendasi"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5" />
 
-            <!-- CARD PIZZA 1 -->
+            <HorizontalScrollView
+                android:id="@+id/hsv_favorites"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:scrollbars="none"
+                app:layout_constraintTop_toBottomOf="@+id/tv_card_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:clipToPadding="false"
+                android:paddingHorizontal="16dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:src="@drawable/cardmenu"
+                                android:scaleType="centerCrop"
+                                android:contentDescription="Truffle Mushroom" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Truffle Mushroom"
+                                android:textColor="@color/app_text_primary"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:layout_marginHorizontal="12dp"
+                                android:layout_marginTop="12dp"/>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="12dp"
+                                android:layout_marginBottom="12dp">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Rp 120.000"
+                                    android:textColor="@color/app_text_secondary"
+                                    android:textSize="14sp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_centerVertical="true"/>
+                                <ImageButton
+                                    android:id="@+id/btn_add_fav_1"
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:src="@android:drawable/ic_input_add"
+                                    app:tint="@color/app_text_primary"
+                                    android:background="?attr/selectableItemBackgroundBorderless"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerVertical="true"/>
+                            </RelativeLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:src="@drawable/cardmenu"
+                                android:scaleType="centerCrop"
+                                android:contentDescription="Quattro Formaggi" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Quattro Formaggi"
+                                android:textColor="@color/app_text_primary"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:layout_marginHorizontal="12dp"
+                                android:layout_marginTop="12dp"/>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="12dp"
+                                android:layout_marginBottom="12dp">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Rp 115.000"
+                                    android:textColor="@color/app_text_secondary"
+                                    android:textSize="14sp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_centerVertical="true"/>
+                                <ImageButton
+                                    android:id="@+id/btn_add_fav_2"
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:src="@android:drawable/ic_input_add"
+                                    app:tint="@color/app_text_primary"
+                                    android:background="?attr/selectableItemBackgroundBorderless"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerVertical="true"/>
+                            </RelativeLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:src="@drawable/cardmenu"
+                                android:scaleType="centerCrop"
+                                android:contentDescription="Spicy Diablo" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Spicy Diablo"
+                                android:textColor="@color/app_text_primary"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:layout_marginHorizontal="12dp"
+                                android:layout_marginTop="12dp"/>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="12dp"
+                                android:layout_marginBottom="12dp">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Rp 110.000"
+                                    android:textColor="@color/app_text_secondary"
+                                    android:textSize="14sp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_centerVertical="true"/>
+                                <ImageButton
+                                    android:id="@+id/btn_add_fav_3"
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:src="@android:drawable/ic_input_add"
+                                    app:tint="@color/app_text_primary"
+                                    android:background="?attr/selectableItemBackgroundBorderless"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerVertical="true"/>
+                            </RelativeLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/tv_all_menu_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pilihan Lainnya"
+                android:textColor="@color/app_text_primary"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/hsv_favorites"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5" />
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_pizza_1"
                 android:layout_width="0dp"
@@ -83,7 +360,7 @@
                 app:cardBackgroundColor="@color/pizza_card_bg"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="6dp"
-                app:layout_constraintTop_toBottomOf="@+id/tv_card_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_all_menu_title"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
 
@@ -98,9 +375,8 @@
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:layout_marginEnd="12dp"
-                        android:src="@drawable/ic_pizza"
-                        android:contentDescription="Pizza Margherita"
-                        app:tint="@color/app_text_primary" />
+                        android:src="@drawable/cardmenu"
+                        android:contentDescription="Pizza Margherita" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -108,21 +384,52 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/tv_pizza_title_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Margherita Classic"
-                            android:textColor="@color/app_text_primary"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/tv_pizza_title_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Margherita Classic"
+                                android:textColor="@color/app_text_primary"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:layout_alignParentStart="true"
+                                android:layout_toStartOf="@+id/ll_price_add_1"/>
+
+                            <LinearLayout
+                                android:id="@+id/ll_price_add_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical">
+                                <TextView
+                                    android:id="@+id/tv_pizza_price_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Rp 85.000"
+                                    android:textColor="@color/app_text_primary"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginEnd="8dp"/>
+                                <ImageButton
+                                    android:id="@+id/btn_add_pizza_1"
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:src="@android:drawable/ic_input_add"
+                                    app:tint="@color/app_text_primary"
+                                    android:background="?attr/selectableItemBackgroundBorderless"/>
+                            </LinearLayout>
+                        </RelativeLayout>
 
                         <TextView
                             android:id="@+id/tv_pizza_desc_1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
-                            android:text="Pizza klasik Italia dengan saus tomat segar, mozzarella creamy, dan daun basil wangi. Dipanggang sempurna dengan crust tipis dan renyah."
+                            android:text="Pizza klasik Italia dengan saus tomat segar, mozzarella creamy, dan daun basil wangi."
                             android:textColor="@color/app_text_secondary"
                             android:textSize="14sp"
                             android:lineSpacingExtra="6dp" />
@@ -130,7 +437,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- CARD PIZZA 2 -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_pizza_2"
                 android:layout_width="0dp"
@@ -156,9 +462,8 @@
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:layout_marginEnd="12dp"
-                        android:src="@drawable/ic_pizza"
-                        android:contentDescription="Pepperoni Supreme"
-                        app:tint="@color/app_text_primary" />
+                        android:src="@drawable/cardmenu"
+                        android:contentDescription="Pepperoni Supreme" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -166,21 +471,51 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/tv_pizza_title_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Pepperoni Supreme"
-                            android:textColor="@color/app_text_primary"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/tv_pizza_title_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Pepperoni Supreme"
+                                android:textColor="@color/app_text_primary"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:layout_alignParentStart="true"
+                                android:layout_toStartOf="@+id/ll_price_add_2"/>
+                            <LinearLayout
+                                android:id="@+id/ll_price_add_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical">
+                                <TextView
+                                    android:id="@+id/tv_pizza_price_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Rp 95.000"
+                                    android:textColor="@color/app_text_primary"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginEnd="8dp"/>
+                                <ImageButton
+                                    android:id="@+id/btn_add_pizza_2"
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:src="@android:drawable/ic_input_add"
+                                    app:tint="@color/app_text_primary"
+                                    android:background="?attr/selectableItemBackgroundBorderless"/>
+                            </LinearLayout>
+                        </RelativeLayout>
 
                         <TextView
                             android:id="@+id/tv_pizza_desc_2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
-                            android:text="Pizza dengan topping pepperoni sapi premium, keju mozzarella leleh, saus tomat spesial, dan taburan oregano. Crust tebal dan empuk."
+                            android:text="Topping pepperoni sapi premium, keju mozzarella leleh, saus tomat spesial, dan taburan oregano."
                             android:textColor="@color/app_text_secondary"
                             android:textSize="14sp"
                             android:lineSpacingExtra="6dp" />
@@ -188,13 +523,11 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- CARD PIZZA 3 -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_pizza_3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="24dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 app:cardBackgroundColor="@color/white"
@@ -215,9 +548,8 @@
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:layout_marginEnd="12dp"
-                        android:src="@drawable/ic_pizza"
-                        android:contentDescription="BBQ Chicken Delight"
-                        app:tint="@color/app_text_primary" />
+                        android:src="@drawable/cardmenu"
+                        android:contentDescription="BBQ Chicken Delight" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -225,21 +557,51 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/tv_pizza_title_3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="BBQ Chicken Delight"
-                            android:textColor="@color/app_text_primary"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/tv_pizza_title_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="BBQ Chicken Delight"
+                                android:textColor="@color/app_text_primary"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:layout_alignParentStart="true"
+                                android:layout_toStartOf="@+id/ll_price_add_3"/>
+                            <LinearLayout
+                                android:id="@+id/ll_price_add_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical">
+                                <TextView
+                                    android:id="@+id/tv_pizza_price_3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Rp 98.000"
+                                    android:textColor="@color/app_text_primary"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginEnd="8dp"/>
+                                <ImageButton
+                                    android:id="@+id/btn_add_pizza_3"
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:src="@android:drawable/ic_input_add"
+                                    app:tint="@color/app_text_primary"
+                                    android:background="?attr/selectableItemBackgroundBorderless"/>
+                            </LinearLayout>
+                        </RelativeLayout>
 
                         <TextView
                             android:id="@+id/tv_pizza_desc_3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
-                            android:text="Pizza dengan daging ayam panggang saus BBQ, irisan bawang bombay, jagung manis, dan mozzarella gurih. Perpaduan manis dan gurih yang sempurna."
+                            android:text="Daging ayam panggang saus BBQ, bawang bombay, jagung manis, dan mozzarella gurih."
                             android:textColor="@color/app_text_secondary"
                             android:textSize="14sp"
                             android:lineSpacingExtra="6dp" />
@@ -247,7 +609,352 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_pizza_4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:cardBackgroundColor="@color/pizza_card_bg"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="6dp"
+                app:layout_constraintTop_toBottomOf="@+id/card_pizza_3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_marginEnd="12dp"
+                        android:src="@drawable/cardmenu"
+                        android:contentDescription="Meat Lovers" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/tv_pizza_title_4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Meat Lovers"
+                                android:textColor="@color/app_text_primary"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:layout_alignParentStart="true"
+                                android:layout_toStartOf="@+id/ll_price_add_4"/>
+                            <LinearLayout
+                                android:id="@+id/ll_price_add_4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical">
+                                <TextView
+                                    android:id="@+id/tv_pizza_price_4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Rp 105.000"
+                                    android:textColor="@color/app_text_primary"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginEnd="8dp"/>
+                                <ImageButton
+                                    android:id="@+id/btn_add_pizza_4"
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:src="@android:drawable/ic_input_add"
+                                    app:tint="@color/app_text_primary"
+                                    android:background="?attr/selectableItemBackgroundBorderless"/>
+                            </LinearLayout>
+                        </RelativeLayout>
+
+                        <TextView
+                            android:id="@+id/tv_pizza_desc_4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="Pesta daging! Pepperoni, sosis sapi, daging cincang, dan smoked beef di atas saus tomat."
+                            android:textColor="@color/app_text_secondary"
+                            android:textSize="14sp"
+                            android:lineSpacingExtra="6dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_pizza_5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="6dp"
+                app:layout_constraintTop_toBottomOf="@+id/card_pizza_4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:gravity="center_vertical">
+                    <ImageView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_marginEnd="12dp"
+                        android:src="@drawable/cardmenu"
+                        android:contentDescription="Veggie Garden" />
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/tv_pizza_title_5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Veggie Garden"
+                                android:textColor="@color/app_text_primary"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:layout_alignParentStart="true"
+                                android:layout_toStartOf="@+id/ll_price_add_5"/>
+                            <LinearLayout
+                                android:id="@+id/ll_price_add_5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical">
+                                <TextView
+                                    android:id="@+id/tv_pizza_price_5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Rp 88.000"
+                                    android:textColor="@color/app_text_primary"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginEnd="8dp"/>
+                                <ImageButton
+                                    android:id="@+id/btn_add_pizza_5"
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:src="@android:drawable/ic_input_add"
+                                    app:tint="@color/app_text_primary"
+                                    android:background="?attr/selectableItemBackgroundBorderless"/>
+                            </LinearLayout>
+                        </RelativeLayout>
+                        <TextView
+                            android:id="@+id/tv_pizza_desc_5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="Paprika, bawang bombay, jamur, jagung manis, dan zaitun hitam di atas keju mozzarella."
+                            android:textColor="@color/app_text_secondary"
+                            android:textSize="14sp"
+                            android:lineSpacingExtra="6dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_pizza_6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:cardBackgroundColor="@color/pizza_card_bg"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="6dp"
+                app:layout_constraintTop_toBottomOf="@+id/card_pizza_5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:gravity="center_vertical">
+                    <ImageView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_marginEnd="12dp"
+                        android:src="@drawable/cardmenu"
+                        android:contentDescription="Hawaiian Paradise" />
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/tv_pizza_title_6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Hawaiian Paradise"
+                                android:textColor="@color/app_text_primary"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:layout_alignParentStart="true"
+                                android:layout_toStartOf="@+id/ll_price_add_6"/>
+                            <LinearLayout
+                                android:id="@+id/ll_price_add_6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical">
+                                <TextView
+                                    android:id="@+id/tv_pizza_price_6"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Rp 92.000"
+                                    android:textColor="@color/app_text_primary"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginEnd="8dp"/>
+                                <ImageButton
+                                    android:id="@+id/btn_add_pizza_6"
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:src="@android:drawable/ic_input_add"
+                                    app:tint="@color/app_text_primary"
+                                    android:background="?attr/selectableItemBackgroundBorderless"/>
+                            </LinearLayout>
+                        </RelativeLayout>
+                        <TextView
+                            android:id="@+id/tv_pizza_desc_6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="Perpaduan tropis nanas segar, smoked beef, dan saus tomat spesial dengan keju mozzarella."
+                            android:textColor="@color/app_text_secondary"
+                            android:textSize="14sp"
+                            android:lineSpacingExtra="6dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_pizza_7_main"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="24dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="6dp"
+                app:layout_constraintTop_toBottomOf="@+id/card_pizza_6"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"> <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/cardmenu"
+                    android:contentDescription="Cheese Mania" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/tv_pizza_title_7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cheese Mania"
+                            android:textColor="@color/app_text_primary"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@+id/ll_price_add_7"/>
+                        <LinearLayout
+                            android:id="@+id/ll_price_add_7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+                            <TextView
+                                android:id="@+id/tv_pizza_price_7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Rp 90.000"
+                                android:textColor="@color/app_text_primary"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:layout_marginEnd="8dp"/>
+                            <ImageButton
+                                android:id="@+id/btn_add_pizza_7"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:src="@android:drawable/ic_input_add"
+                                app:tint="@color/app_text_primary"
+                                android:background="?attr/selectableItemBackgroundBorderless"/>
+                        </LinearLayout>
+                    </RelativeLayout>
+                    <TextView
+                        android:id="@+id/tv_pizza_desc_7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="Kombinasi keju mozzarella, cheddar, parmesan, dan saus keju creamy. Surga pecinta keju!"
+                        android:textColor="@color/app_text_secondary"
+                        android:textSize="14sp"
+                        android:lineSpacingExtra="6dp" />
+                </LinearLayout>
+            </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/ic_cart"
+        app:tint="@color/white"
+        app:backgroundTint="@color/app_tomato_red"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="Lihat Keranjang Belanja" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
