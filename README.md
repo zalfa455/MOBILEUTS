@@ -8,7 +8,7 @@
 ---
 
 ## 🎨 Tampilan Aplikasi
-Berikut merupakan tampilan antarmuka aplikasi:
+tampilan antarmuka aplikasi:
 
 | Halaman | Screenshot |
 |----------|-------------|
