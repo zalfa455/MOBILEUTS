@@ -64,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rp 120.000"
-                android:textColor="@color/app_text_secondary"
+                android:textColor="@color/pizza_accent"
                 android:textSize="16sp"
                 app:layout_constraintBaseline_toBaselineOf="@+id/tv_item_1"
                 app:layout_constraintEnd_toEndOf="parent" />
@@ -87,7 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rp 70.000"
-                android:textColor="@color/app_text_secondary"
+                android:textColor="@color/pizza_accent"
                 android:textSize="16sp"
                 app:layout_constraintBaseline_toBaselineOf="@+id/tv_item_2"
                 app:layout_constraintEnd_toEndOf="parent" />
@@ -119,7 +119,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rp 190.000"
-                android:textColor="@color/app_text_primary"
+                android:textColor="@color/pizza_accent"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBaseline_toBaselineOf="@+id/tv_total_label"
